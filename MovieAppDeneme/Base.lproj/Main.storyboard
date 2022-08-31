@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tLi-gE-7e6">
-                                <rect key="frame" x="0.0" y="129" width="414" height="671"/>
+                                <rect key="frame" x="0.0" y="129" width="414" height="767"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="200" id="LSa-D7-aEr" customClass="CellVC" customModule="MovieAppDeneme" customModuleProvider="target">
@@ -125,7 +125,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.76961690187454224" green="0.94258195161819458" blue="0.87170249223709106" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="tLi-gE-7e6" secondAttribute="bottom" constant="62" id="2OP-DP-XlP"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="tLi-gE-7e6" secondAttribute="bottom" constant="-34" id="2OP-DP-XlP"/>
                             <constraint firstItem="tLi-gE-7e6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9JB-OP-hCR"/>
                             <constraint firstItem="kHy-fc-Tuu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="9Pk-YS-o9O"/>
                             <constraint firstItem="kHy-fc-Tuu" firstAttribute="centerX" secondItem="tLi-gE-7e6" secondAttribute="centerX" id="CQ8-9C-9Cj"/>
