@@ -22,7 +22,7 @@
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="200" id="LSa-D7-aEr" customClass="CellVC" customModule="MovieAppDeneme" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="414" height="200"/>
+                                        <rect key="frame" x="0.0" y="32" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LSa-D7-aEr" id="y1n-rO-eny">
                                             <rect key="frame" x="0.0" y="0.0" width="385.5" height="200"/>
@@ -216,8 +216,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lAt-uB-8F4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bev-v2-lfb">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Bev-v2-lfb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.76838523150000004" green="0.93993526699999996" blue="0.86977952719999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.76838523150000004" green="0.93993526699999996" blue="0.86977952719999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

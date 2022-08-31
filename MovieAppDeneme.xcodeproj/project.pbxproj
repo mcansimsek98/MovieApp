@@ -16,8 +16,14 @@
 		B2520A3E28BCF30D002047B9 /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2520A3D28BCF30D002047B9 /* DetailsVC.swift */; };
 		B2520A4128BCF348002047B9 /* CellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2520A4028BCF348002047B9 /* CellVC.swift */; };
 		B2520A4428BCF75B002047B9 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2520A4328BCF75B002047B9 /* Model.swift */; };
-		B263B92228BD50EF003BBBC2 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B263B92128BD50EF003BBBC2 /* SDWebImage */; };
-		B2FDC32228BE9C540010A0F5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B2FDC32128BE9C540010A0F5 /* Alamofire */; };
+		B2B01EE928BF9E9F00282C81 /* WebSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B01EE828BF9E9F00282C81 /* WebSevice.swift */; };
+		B2B01EED28BFA19A00282C81 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = B2B01EEC28BFA19A00282C81 /* Moya */; };
+		B2B01EF028BFA1BB00282C81 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B2B01EEF28BFA1BB00282C81 /* SDWebImage */; };
+		B2B01EF228BFE7B100282C81 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B01EF128BFE7B100282C81 /* API.swift */; };
+		B2B01EF428BFEA4600282C81 /* NetworManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B01EF328BFEA4600282C81 /* NetworManager.swift */; };
+		B2B01EF728BFF3D600282C81 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B01EF628BFF3D600282C81 /* SearchModel.swift */; };
+		B2B01EF928BFFE3200282C81 /* ExtentionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B01EF828BFFE3200282C81 /* ExtentionDetails.swift */; };
+		B2B01EFF28BFFF1200282C81 /* ExtentionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B01EFE28BFFF1200282C81 /* ExtentionTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +38,12 @@
 		B2520A3D28BCF30D002047B9 /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 		B2520A4028BCF348002047B9 /* CellVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellVC.swift; sourceTree = "<group>"; };
 		B2520A4328BCF75B002047B9 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		B2B01EE828BF9E9F00282C81 /* WebSevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSevice.swift; sourceTree = "<group>"; };
+		B2B01EF128BFE7B100282C81 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		B2B01EF328BFEA4600282C81 /* NetworManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworManager.swift; sourceTree = "<group>"; };
+		B2B01EF628BFF3D600282C81 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		B2B01EF828BFFE3200282C81 /* ExtentionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionDetails.swift; sourceTree = "<group>"; };
+		B2B01EFE28BFFF1200282C81 /* ExtentionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,8 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B263B92228BD50EF003BBBC2 /* SDWebImage in Frameworks */,
-				B2FDC32228BE9C540010A0F5 /* Alamofire in Frameworks */,
+				B2B01EF028BFA1BB00282C81 /* SDWebImage in Frameworks */,
+				B2B01EED28BFA19A00282C81 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,12 +78,11 @@
 		B2520A2628BCED71002047B9 /* MovieAppDeneme */ = {
 			isa = PBXGroup;
 			children = (
+				B2B01EFD28BFFE9400282C81 /* Base */,
 				B2520A3B28BCF2AE002047B9 /* App */,
+				B2B01EF528BFF37900282C81 /* Model */,
 				B2520A4228BCF743002047B9 /* WebService */,
 				B2520A3C28BCF2CC002047B9 /* ViewController */,
-				B2520A2D28BCED71002047B9 /* Main.storyboard */,
-				B2520A3028BCED75002047B9 /* Assets.xcassets */,
-				B2520A3228BCED75002047B9 /* LaunchScreen.storyboard */,
 				B2520A3528BCED75002047B9 /* Info.plist */,
 			);
 			path = MovieAppDeneme;
@@ -89,9 +100,9 @@
 		B2520A3C28BCF2CC002047B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B2520A2B28BCED71002047B9 /* TableViewVC.swift */,
-				B2520A3D28BCF30D002047B9 /* DetailsVC.swift */,
-				B2520A4028BCF348002047B9 /* CellVC.swift */,
+				B2B01EFA28BFFE4400282C81 /* Home */,
+				B2B01EFB28BFFE5500282C81 /* Detail */,
+				B2B01EFC28BFFE6A00282C81 /* Cell */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -99,9 +110,56 @@
 		B2520A4228BCF743002047B9 /* WebService */ = {
 			isa = PBXGroup;
 			children = (
-				B2520A4328BCF75B002047B9 /* Model.swift */,
+				B2B01EE828BF9E9F00282C81 /* WebSevice.swift */,
+				B2B01EF128BFE7B100282C81 /* API.swift */,
+				B2B01EF328BFEA4600282C81 /* NetworManager.swift */,
 			);
 			path = WebService;
+			sourceTree = "<group>";
+		};
+		B2B01EF528BFF37900282C81 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B2520A4328BCF75B002047B9 /* Model.swift */,
+				B2B01EF628BFF3D600282C81 /* SearchModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B2B01EFA28BFFE4400282C81 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B2520A2B28BCED71002047B9 /* TableViewVC.swift */,
+				B2B01EFE28BFFF1200282C81 /* ExtentionTableView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		B2B01EFB28BFFE5500282C81 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				B2520A3D28BCF30D002047B9 /* DetailsVC.swift */,
+				B2B01EF828BFFE3200282C81 /* ExtentionDetails.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		B2B01EFC28BFFE6A00282C81 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B2520A4028BCF348002047B9 /* CellVC.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		B2B01EFD28BFFE9400282C81 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B2520A3228BCED75002047B9 /* LaunchScreen.storyboard */,
+				B2520A3028BCED75002047B9 /* Assets.xcassets */,
+				B2520A2D28BCED71002047B9 /* Main.storyboard */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,8 +179,8 @@
 			);
 			name = MovieAppDeneme;
 			packageProductDependencies = (
-				B263B92128BD50EF003BBBC2 /* SDWebImage */,
-				B2FDC32128BE9C540010A0F5 /* Alamofire */,
+				B2B01EEC28BFA19A00282C81 /* Moya */,
+				B2B01EEF28BFA1BB00282C81 /* SDWebImage */,
 			);
 			productName = MovieAppDeneme;
 			productReference = B2520A2428BCED71002047B9 /* MovieAppDeneme.app */;
@@ -153,8 +211,8 @@
 			);
 			mainGroup = B2520A1B28BCED71002047B9;
 			packageReferences = (
-				B263B92028BD50EF003BBBC2 /* XCRemoteSwiftPackageReference "SDWebImage" */,
-				B2FDC32028BE9C540010A0F5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				B2B01EEB28BFA19A00282C81 /* XCRemoteSwiftPackageReference "Moya" */,
+				B2B01EEE28BFA1BB00282C81 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = B2520A2528BCED71002047B9 /* Products */;
 			projectDirPath = "";
@@ -183,11 +241,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2B01EE928BF9E9F00282C81 /* WebSevice.swift in Sources */,
+				B2B01EF428BFEA4600282C81 /* NetworManager.swift in Sources */,
 				B2520A4128BCF348002047B9 /* CellVC.swift in Sources */,
+				B2B01EF928BFFE3200282C81 /* ExtentionDetails.swift in Sources */,
+				B2B01EFF28BFFF1200282C81 /* ExtentionTableView.swift in Sources */,
+				B2B01EF728BFF3D600282C81 /* SearchModel.swift in Sources */,
 				B2520A2C28BCED71002047B9 /* TableViewVC.swift in Sources */,
 				B2520A3E28BCF30D002047B9 /* DetailsVC.swift in Sources */,
 				B2520A4428BCF75B002047B9 /* Model.swift in Sources */,
 				B2520A2828BCED71002047B9 /* AppDelegate.swift in Sources */,
+				B2B01EF228BFE7B100282C81 /* API.swift in Sources */,
 				B2520A2A28BCED71002047B9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,34 +472,34 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B263B92028BD50EF003BBBC2 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+		B2B01EEB28BFA19A00282C81 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		B2B01EEE28BFA1BB00282C81 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		B2FDC32028BE9C540010A0F5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B263B92128BD50EF003BBBC2 /* SDWebImage */ = {
+		B2B01EEC28BFA19A00282C81 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B263B92028BD50EF003BBBC2 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
+			package = B2B01EEB28BFA19A00282C81 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
 		};
-		B2FDC32128BE9C540010A0F5 /* Alamofire */ = {
+		B2B01EEF28BFA1BB00282C81 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B2FDC32028BE9C540010A0F5 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
+			package = B2B01EEE28BFA1BB00282C81 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
