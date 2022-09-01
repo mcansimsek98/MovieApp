@@ -12,7 +12,7 @@ class DetailsVC: UIViewController {
     @IBOutlet var titleLbl: UILabel!
     @IBOutlet var textView: UITextView!
 
-    var selectedArray: TheMovie?
+    var selectedArray: HomeViewModel?
     
     var languageText = ""
     var popularityText = ""
@@ -24,6 +24,7 @@ class DetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButton))
         guard selectedArray != nil else {return}
         getDetailData()

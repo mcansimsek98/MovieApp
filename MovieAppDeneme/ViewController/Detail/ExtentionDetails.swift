@@ -10,13 +10,13 @@ import UIKit
 extension DetailsVC {
     
     func getDetailData() {
-        titleLbl.text = selectedArray?.original_title ?? ""
-        bodyText = selectedArray?.overview ?? ""
-        popularityText = "\(selectedArray?.popularity ?? 000)"
-        relaseDateText = selectedArray?.release_date ?? ""
-        orginalTitle = selectedArray?.original_title ?? ""
-        voteCounText = "\(selectedArray?.vote_count ?? 000)"
-        languageText = "\(selectedArray?.original_language ?? "")"
+        titleLbl.text = selectedArray?.title ?? ""
+        bodyText = selectedArray?.bodyLbl ?? ""
+        popularityText = "\(selectedArray?.popularaty ?? 000)"
+        relaseDateText = selectedArray?.relaseDate ?? ""
+        orginalTitle = selectedArray?.orginalTitle ?? ""
+        voteCounText = "\(selectedArray?.voteCont ?? 000)"
+        languageText = "\(selectedArray?.language ?? "")"
 
             textView.text = """
 Original Title: \(orginalTitle.uppercased())
@@ -35,9 +35,8 @@ Vote Count: \(voteCounText.uppercased())
     }
     
     func getImage() {
-        image = selectedArray?.backdrop_path ?? ""
-        let url = "https://image.tmdb.org/t/p/w500\(image)"
-        let imageUrl: NSURL? = NSURL(string: url)
+        image = selectedArray?.bacDropPath ?? ""
+        let imageUrl: NSURL? = NSURL(string: image)
         if let imageUrl = imageUrl {
             imageView.sd_setImage(with: imageUrl as URL)
         }
