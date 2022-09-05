@@ -23,8 +23,12 @@
 		B2B01EF228BFE7B100282C81 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B01EF128BFE7B100282C81 /* API.swift */; };
 		B2B01EF428BFEA4600282C81 /* NetworManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B01EF328BFEA4600282C81 /* NetworManager.swift */; };
 		B2B01EF728BFF3D600282C81 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B01EF628BFF3D600282C81 /* SearchModel.swift */; };
-		B2B01EF928BFFE3200282C81 /* ExtentionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B01EF828BFFE3200282C81 /* ExtentionDetails.swift */; };
-		B2B01EFF28BFFF1200282C81 /* ExtentionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B01EFE28BFFF1200282C81 /* ExtentionTableView.swift */; };
+		B2B512F228C2C436007987F5 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B512F128C2C436007987F5 /* HomeTableViewCell.swift */; };
+		B2B512F428C2C474007987F5 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B512F328C2C474007987F5 /* HomeCollectionViewCell.swift */; };
+		B2C8B5E728C276F600612F17 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C8B5E628C276F600612F17 /* DetailCell.swift */; };
+		B2F5643828C1EF59008B3ABC /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B2F5643728C1EF59008B3ABC /* RxSwift */; };
+		B2F5643B28C224C5008B3ABC /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = B2F5643A28C224C5008B3ABC /* RxMoya */; };
+		B2F5643D28C23345008B3ABC /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = B2F5643C28C23345008B3ABC /* RxRelay */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +48,9 @@
 		B2B01EF128BFE7B100282C81 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		B2B01EF328BFEA4600282C81 /* NetworManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworManager.swift; sourceTree = "<group>"; };
 		B2B01EF628BFF3D600282C81 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
-		B2B01EF828BFFE3200282C81 /* ExtentionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionDetails.swift; sourceTree = "<group>"; };
-		B2B01EFE28BFFF1200282C81 /* ExtentionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionTableView.swift; sourceTree = "<group>"; };
+		B2B512F128C2C436007987F5 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		B2B512F328C2C474007987F5 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		B2C8B5E628C276F600612F17 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +58,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2F5643D28C23345008B3ABC /* RxRelay in Frameworks */,
+				B2F5643828C1EF59008B3ABC /* RxSwift in Frameworks */,
 				B2B01EF028BFA1BB00282C81 /* SDWebImage in Frameworks */,
+				B2F5643B28C224C5008B3ABC /* RxMoya in Frameworks */,
 				B2B01EED28BFA19A00282C81 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,6 +74,7 @@
 			children = (
 				B2520A2628BCED71002047B9 /* MovieAppDeneme */,
 				B2520A2528BCED71002047B9 /* Products */,
+				B2F5643928C224C5008B3ABC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,7 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				B2520A2B28BCED71002047B9 /* TableViewVC.swift */,
-				B2B01EFE28BFFF1200282C81 /* ExtentionTableView.swift */,
+				B2B512F128C2C436007987F5 /* HomeTableViewCell.swift */,
+				B2B512F328C2C474007987F5 /* HomeCollectionViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -150,7 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				B2520A3D28BCF30D002047B9 /* DetailsVC.swift */,
-				B2B01EF828BFFE3200282C81 /* ExtentionDetails.swift */,
+				B2C8B5E628C276F600612F17 /* DetailCell.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -173,6 +183,13 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		B2F5643928C224C5008B3ABC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -192,6 +209,9 @@
 			packageProductDependencies = (
 				B2B01EEC28BFA19A00282C81 /* Moya */,
 				B2B01EEF28BFA1BB00282C81 /* SDWebImage */,
+				B2F5643728C1EF59008B3ABC /* RxSwift */,
+				B2F5643A28C224C5008B3ABC /* RxMoya */,
+				B2F5643C28C23345008B3ABC /* RxRelay */,
 			);
 			productName = MovieAppDeneme;
 			productReference = B2520A2428BCED71002047B9 /* MovieAppDeneme.app */;
@@ -224,6 +244,7 @@
 			packageReferences = (
 				B2B01EEB28BFA19A00282C81 /* XCRemoteSwiftPackageReference "Moya" */,
 				B2B01EEE28BFA1BB00282C81 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				B2F5643628C1EF59008B3ABC /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = B2520A2528BCED71002047B9 /* Products */;
 			projectDirPath = "";
@@ -254,9 +275,10 @@
 			files = (
 				B2B01EE928BF9E9F00282C81 /* WebSevice.swift in Sources */,
 				B2B01EF428BFEA4600282C81 /* NetworManager.swift in Sources */,
+				B2B512F228C2C436007987F5 /* HomeTableViewCell.swift in Sources */,
 				B2520A4128BCF348002047B9 /* CellVC.swift in Sources */,
-				B2B01EF928BFFE3200282C81 /* ExtentionDetails.swift in Sources */,
-				B2B01EFF28BFFF1200282C81 /* ExtentionTableView.swift in Sources */,
+				B2B512F428C2C474007987F5 /* HomeCollectionViewCell.swift in Sources */,
+				B2C8B5E728C276F600612F17 /* DetailCell.swift in Sources */,
 				B2B01EF728BFF3D600282C81 /* SearchModel.swift in Sources */,
 				B2520A2C28BCED71002047B9 /* TableViewVC.swift in Sources */,
 				B2520A3E28BCF30D002047B9 /* DetailsVC.swift in Sources */,
@@ -417,6 +439,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -428,7 +451,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -445,6 +468,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -456,7 +480,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -500,6 +524,14 @@
 				kind = branch;
 			};
 		};
+		B2F5643628C1EF59008B3ABC /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -512,6 +544,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B2B01EEE28BFA1BB00282C81 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		B2F5643728C1EF59008B3ABC /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B2F5643628C1EF59008B3ABC /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		B2F5643A28C224C5008B3ABC /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B2B01EEB28BFA19A00282C81 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+		B2F5643C28C23345008B3ABC /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B2F5643628C1EF59008B3ABC /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

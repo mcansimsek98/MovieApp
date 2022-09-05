@@ -6,45 +6,60 @@
 //
 
 import UIKit
+import RxSwift
+import RxRelay
 
 // MARK: MovieListModel
 
 class MovieListViewModel : ObservableObject {
-    @Published var movieList = [HomeViewModel]()
-    let networkManager  = NetworkManager()
+    var popularMovieList = PublishSubject<[HomeViewModel]>()
+    var topRelatedMovieList = PublishSubject<[HomeViewModel]>()
+    var upcominMovieList = PublishSubject<[HomeViewModel]>()
     
-    func downloadMovies (tableView : UITableView) {
-       networkManager.fetchPopularMovies(completion: { [weak self] result in
-           switch result {
-           case .success(let popular):
-               self?.movieList = popular.results.map(HomeViewModel.init)
-               tableView.reloadData()
-           case .failure(let error):
-               print(error.localizedDescription)
-           }
-       })
+    var popularMovies: [HomeViewModel] = []
+    var topRelatedMovies: [HomeViewModel] = []
+    var upcominMovies: [HomeViewModel] = []
+    
+    let disposeBag: DisposeBag = DisposeBag()
+
+    func downloadMovies (){
+        NetworkManager.shared.fetchPopularMovies().subscribe(onNext: { response in
+            let mapMovies = response.results.map(HomeViewModel.init)
+            self.popularMovies = mapMovies
+            self.downloadTopRelated()
+            //self.popularMovieList.onNext(mapMovies)
+        },onError: { error in
+            print(error.localizedDescription)
+        }).disposed(by: disposeBag)
     }
-    func downloadTopRelated (tableView : UITableView) {
-        networkManager.fetchTopRelatedMovies(completion: { [weak self] result in
-           switch result {
-           case .success(let popular):
-               self?.movieList = popular.results.map(HomeViewModel.init)
-               tableView.reloadData()
-           case .failure(let error):
-               print(error.localizedDescription)
-           }
-       })
+    func downloadTopRelated () {
+        NetworkManager.shared.fetchTopRelatedMovies().subscribe(onNext: {  response in
+            let mapMovies = response.results.map(HomeViewModel.init)
+            self.topRelatedMovies = mapMovies
+            self.downloadUpcomming()
+            //self.topRelatedMovieList.onNext(mapMovies)
+        },onError: { error in
+            print(error.localizedDescription)
+        }).disposed(by: disposeBag)
     }
-    func downloadUpcomming (tableView : UITableView) {
-       networkManager.fetchUpcommingMovies(completion: { [weak self] result in
-           switch result {
-           case .success(let popular):
-               self?.movieList = popular.results.map(HomeViewModel.init)
-               tableView.reloadData()
-           case .failure(let error):
-               print(error.localizedDescription)
-           }
-       })
+    
+    func downloadUpcomming () {
+        NetworkManager.shared.fetchUpcommingMovies().subscribe(onNext: { response in
+            let mapMovies = response.results.map(HomeViewModel.init)
+            self.upcominMovies = mapMovies
+            self.upcominMovieList.onNext(mapMovies)
+        },onError: { error in
+            print(error.localizedDescription)
+        }).disposed(by: disposeBag)
+    }
+    
+    func detailMovies() {
+        NetworkManager.shared.fetchUpcommingMovies().subscribe(onNext: { response in
+            let mapMovies = response.results.map(HomeViewModel.init)
+            self.upcominMovieList.onNext(mapMovies)
+        },onError: { error in
+            print(error.localizedDescription)
+        }).disposed(by: disposeBag)
     }
     
 }
@@ -63,8 +78,8 @@ struct HomeViewModel {
     var language : String {
         movie.original_language
     }
-    var scoreLbl : String {
-        "\(movie.vote_average)"
+    var scoreLbl : Double {
+        movie.vote_average
     }
     var posterImage : String {
         "\(Constants.IMAGEAPI.baseURLImage)\(movie.poster_path)"

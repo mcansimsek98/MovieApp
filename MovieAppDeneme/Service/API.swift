@@ -12,9 +12,8 @@ enum API {
     case popular
     case topRelated
     case upcomming
-    case search(query: String)
+   
 }
-
 
 extension API: TargetType {
     var baseURL: URL {
@@ -30,10 +29,8 @@ extension API: TargetType {
             return "movie/upcoming"
         case .topRelated:
             return "movie/top_rated"
-        case .search:
-            return "search/movie"
+        
         }
-    
     }
     
     var method: Moya.Method {
@@ -52,15 +49,11 @@ extension API: TargetType {
             return .requestParameters(parameters: ["api_key" : Constants.API.apiKey], encoding: URLEncoding.queryString)
         case .upcomming:
             return .requestParameters(parameters: ["api_key" : Constants.API.apiKey], encoding: URLEncoding.queryString)
-        case .search(query: let query):
-            return .requestParameters(parameters: ["query" : query, "api_key" : Constants.API.apiKey], encoding: URLEncoding.queryString)
         }
     }
     
     var headers: [String : String]? {
         return nil
     }
-
-    
-    
+ 
 }

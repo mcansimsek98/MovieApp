@@ -7,53 +7,36 @@
 
 import Moya
 import Foundation
-
-enum NetworkError : Error {
-    case notFound
-    case unexpectedError
-}
+import RxSwift
+import RxMoya
+import UIKit
 
 protocol Networkable {
     var provider: MoyaProvider<API> { get }
-    func fetchPopularMovies(completion: @escaping (Result<Movies, Error>) -> ())
-    func fetchTopRelatedMovies(completion: @escaping (Result<Movies, Error>) -> ())
-    func fetchUpcommingMovies(completion: @escaping (Result<Movies, Error>) -> ())
-    func fetchSearchMovies(query: String,completion: @escaping (Result<Movies, Error>) -> ())
+    
+    func fetchPopularMovies() -> Observable<Movies>
+    func fetchTopRelatedMovies() -> Observable<Movies>
+    func fetchUpcommingMovies() -> Observable<Movies>
+    
 }
 
 class NetworkManager: Networkable {
-    var provider = MoyaProvider<API>(plugins: [NetworkLoggerPlugin()])
+    var provider = MoyaProvider<API>()
+    static let shared  = NetworkManager()
     
-    func fetchPopularMovies(completion: @escaping (Result<Movies, Error>) -> ()) {
-        request(target: .popular, completion: completion)
-    }
-    
-    func fetchTopRelatedMovies(completion: @escaping (Result<Movies, Error>) -> ()) {
-        request(target: .topRelated, completion: completion)
-    }
-    
-    func fetchUpcommingMovies(completion: @escaping (Result<Movies, Error>) -> ()) {
-        request(target: .upcomming, completion: completion)
-    }
-    func fetchSearchMovies(query: String, completion: @escaping (Result<Movies, Error>) -> ()) {
-        request(target: .search(query: query), completion: completion)
-    }
-}
-
-private extension NetworkManager {
-    func request<T: Decodable>(target: API, completion: @escaping (Result<T, Error>) -> ()) {
-        provider.request(target) { result in
-            switch result {
-            case let .success(responce):
-                do{
-                    let result = try JSONDecoder().decode(T.self, from: responce.data)
-                    completion(.success(result))
-                }catch let error {
-                    completion(.failure(error))
-                }
-            case let .failure(error):
-                completion(.failure(error))
+    func fetchPopularMovies() -> Observable<Movies> { request( .popular)}
+    func fetchTopRelatedMovies() -> Observable<Movies> {request( .topRelated)}
+    func fetchUpcommingMovies() -> Observable<Movies> { request( .upcomming)}
+   
+    func request<T: Codable>(_ request: API) -> Observable<T> {
+        self.provider.rx
+            .request(request)
+            .asObservable()
+            .filterSuccessfulStatusAndRedirectCodes().map{ (result) in
+                return try result.map (T.self)
             }
-        }
+            .catch { error in
+                return Observable.error(error)
+            }
     }
 }
