@@ -17,13 +17,10 @@ class DetailsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     @IBOutlet var relaseDate: UILabel!
     @IBOutlet var popularty: UILabel!
     @IBOutlet var voteCount: UILabel!
-    @IBOutlet var bodyTextView: UITextView!
-    
-    
+    @IBOutlet var bodyLBL: UILabel!
     @IBOutlet var collectionVeiw: UICollectionView!
     let movieListViewModel : MovieListViewModel = MovieListViewModel()
     let disposeBag: DisposeBag = DisposeBag()
-    
     var selectedArray: HomeViewModel?
     var detailsMovies : [HomeViewModel] = [] {
         didSet {
@@ -31,20 +28,20 @@ class DetailsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButton))
         guard selectedArray != nil else {return}
         getDetailData()
         getImage()
         collectionVeiw.delegate = self
         collectionVeiw.dataSource = self
-        binViewModel()
+        DispatchQueue.main.async {
+            self.binViewModel()
+        }
+        
         title = "\(selectedArray?.title ?? "")"
     }
- 
-    
+  
     func binViewModel(){
         movieListViewModel.detailMovies()
         movieListViewModel.upcominMovieList.subscribe(onNext: { response in
@@ -55,8 +52,6 @@ class DetailsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             self.collectionVeiw.reloadData()
         }).disposed(by: disposeBag)
     }
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return detailsMovies.count
@@ -74,10 +69,10 @@ class DetailsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         cell.scoreLbl.text = "Vote Average: \(movie.scoreLbl)"
         cell.detailTitleLbl.text = "\(movie.title)"
         cell.layer.borderColor = UIColor(white: 0, alpha: 0.4).cgColor
-        cell.layer.borderWidth = 2
+        cell.layer.borderWidth = 4
         cell.layer.cornerRadius = 10
         cell.detailImageCell.layer.borderColor = UIColor(white: 0, alpha: 0.4).cgColor
-        cell.detailImageCell.layer.borderWidth = 3
+        cell.detailImageCell.layer.borderWidth = 2
         cell.detailImageCell.layer.cornerRadius = 4
         return cell
     }
@@ -91,12 +86,11 @@ class DetailsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
 
 }
 
-
 extension DetailsVC {
     
     func getDetailData() {
         titleLbl.text = selectedArray?.title ?? "".uppercased()
-        bodyTextView.text = "     \(selectedArray?.bodyLbl ?? "")"
+        bodyLBL.text = "     \(selectedArray?.bodyLbl ?? "")"
         popularty.text = "Popularity: " + "\(selectedArray?.popularaty ?? 000)"
         relaseDate.text = "Relase Date: " + "\(selectedArray?.relaseDate ?? "")"
         orginalTitleLbl.text = "Orginal Title: " + "\(selectedArray?.orginalTitle ?? "")".uppercased()
@@ -115,13 +109,45 @@ extension DetailsVC {
         imageView.layer.borderWidth = 3
         imageView.layer.cornerRadius = 4
     }
-    
-    @objc func shareButton() {
-        let item = selectedArray?.title ?? ""
-        let vc = UIActivityViewController(activityItems: [item], applicationActivities: [] )
-        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-        present(vc, animated: true)
-    }
-    
-    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButton))
+//    @objc func shareButton() {
+//        let item = selectedArray?.title ?? ""
+//        let vc = UIActivityViewController(activityItems: [item], applicationActivities: [] )
+//        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+//        present(vc, animated: true)
+//    }
+    
