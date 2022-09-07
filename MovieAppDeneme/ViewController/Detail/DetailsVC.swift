@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import SDWebImage
 
+
 class DetailsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var titleLbl: UILabel!
@@ -43,8 +44,8 @@ class DetailsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     }
   
     func binViewModel(){
-        movieListViewModel.detailMovies()
-        movieListViewModel.upcominMovieList.subscribe(onNext: { response in
+        movieListViewModel.detailMovies(id: selectedArray?.id ?? 0)
+        movieListViewModel.similarMovieList.subscribe(onNext: { response in
             self.detailsMovies = response
             self.detailsMovies.sort() {
                 $1.scoreLbl < $0.scoreLbl
@@ -66,8 +67,9 @@ class DetailsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         if let imageUrl = imageUrl {
             cell.detailImageCell.sd_setImage(with: imageUrl as URL)
         }
-        cell.scoreLbl.text = "Vote Average: \(movie.scoreLbl)"
+        
         cell.detailTitleLbl.text = "\(movie.title)"
+        cell.scoreLbl.text = "Vote Average: \(movie.scoreLbl)"
         cell.layer.borderColor = UIColor(white: 0, alpha: 0.4).cgColor
         cell.layer.borderWidth = 4
         cell.layer.cornerRadius = 10

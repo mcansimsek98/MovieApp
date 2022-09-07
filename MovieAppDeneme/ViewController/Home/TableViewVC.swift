@@ -23,12 +23,13 @@ class TableViewVC: UIViewController, UISearchBarDelegate {
     var upcommingMovieList : [HomeViewModel] = []
     let movieListViewModel : MovieListViewModel = MovieListViewModel()
     let disposeBag: DisposeBag = DisposeBag()
+    @IBOutlet var headImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         callViewDidload()
         binViewModel()
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchMethod))
     }
     
     func callViewDidload() {
@@ -49,6 +50,12 @@ class TableViewVC: UIViewController, UISearchBarDelegate {
             self.upcommingMovieList = self.movieListViewModel.upcominMovies
             self.tableView.reloadData()
         }).disposed(by: disposeBag)
+    }
+    
+    @objc func searchMethod() {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Search") as? SearchVC {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func moveOnMovieList(cindex: Int, index: Int ) {

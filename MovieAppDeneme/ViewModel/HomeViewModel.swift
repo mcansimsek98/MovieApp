@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxRelay
+import RxCocoa
 
 // MARK: MovieListModel
 
@@ -15,7 +16,8 @@ class MovieListViewModel : ObservableObject {
     var popularMovieList = PublishSubject<[HomeViewModel]>()
     var topRelatedMovieList = PublishSubject<[HomeViewModel]>()
     var upcominMovieList = PublishSubject<[HomeViewModel]>()
-    
+    var similarMovieList = PublishSubject<[HomeViewModel]>()
+    var searchMovieList = PublishSubject<[HomeViewModel]>()
     var popularMovies: [HomeViewModel] = []
     var topRelatedMovies: [HomeViewModel] = []
     var upcominMovies: [HomeViewModel] = []
@@ -42,7 +44,6 @@ class MovieListViewModel : ObservableObject {
             print(error.localizedDescription)
         }).disposed(by: disposeBag)
     }
-    
     func downloadUpcomming () {
         NetworkManager.shared.fetchUpcommingMovies().subscribe(onNext: { response in
             let mapMovies = response.results.map(HomeViewModel.init)
@@ -52,15 +53,25 @@ class MovieListViewModel : ObservableObject {
             print(error.localizedDescription)
         }).disposed(by: disposeBag)
     }
-    
-    func detailMovies() {
-        NetworkManager.shared.fetchUpcommingMovies().subscribe(onNext: { response in
+    func detailMovies(id: Int) {
+        NetworkManager.shared.fetchSimilarMovies(id:id ).subscribe(onNext: { response in
             let mapMovies = response.results.map(HomeViewModel.init)
-            self.upcominMovieList.onNext(mapMovies)
+            self.similarMovieList.onNext(mapMovies)
         },onError: { error in
             print(error.localizedDescription)
         }).disposed(by: disposeBag)
     }
+    
+    func searchMovies() {
+        NetworkManager.shared.fetchSearchMovies().subscribe(onNext: { response in
+            let mapMovies = response.results.map(HomeViewModel.init)
+            self.searchMovieList.onNext(mapMovies)
+        }, onError: { error in
+            print(error.localizedDescription)
+        }).disposed(by: disposeBag)
+    }
+    
+
     
 }
 
@@ -68,6 +79,10 @@ class MovieListViewModel : ObservableObject {
 
 struct HomeViewModel {
     let movie : TheMovie
+    
+    var id: Int {
+        movie.id
+    }
     
     var title : String {
         movie.title

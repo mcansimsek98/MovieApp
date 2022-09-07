@@ -12,7 +12,8 @@ enum API {
     case popular
     case topRelated
     case upcomming
-   
+    case similar(id: Int)
+    case search
 }
 
 extension API: TargetType {
@@ -29,7 +30,10 @@ extension API: TargetType {
             return "movie/upcoming"
         case .topRelated:
             return "movie/top_rated"
-        
+        case .similar(let id):
+            return "movie/\(id)/similar"
+        case .search:
+            return "search/movie"
         }
     }
     
@@ -49,6 +53,10 @@ extension API: TargetType {
             return .requestParameters(parameters: ["api_key" : Constants.API.apiKey], encoding: URLEncoding.queryString)
         case .upcomming:
             return .requestParameters(parameters: ["api_key" : Constants.API.apiKey], encoding: URLEncoding.queryString)
+        case .similar(let id):
+            return .requestParameters(parameters: ["movie_id": id, "api_key": Constants.API.apiKey], encoding: URLEncoding.queryString)
+        case .search:
+            return .requestParameters(parameters: ["api_key": Constants.API.apiKey], encoding: URLEncoding.queryString)
         }
     }
     

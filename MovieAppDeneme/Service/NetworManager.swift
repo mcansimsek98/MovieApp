@@ -17,7 +17,8 @@ protocol Networkable {
     func fetchPopularMovies() -> Observable<Movies>
     func fetchTopRelatedMovies() -> Observable<Movies>
     func fetchUpcommingMovies() -> Observable<Movies>
-    
+    func fetchSimilarMovies(id: Int) -> Observable<Movies>
+    func fetchSearchMovies() -> Observable<Movies>
 }
 
 class NetworkManager: Networkable {
@@ -27,6 +28,8 @@ class NetworkManager: Networkable {
     func fetchPopularMovies() -> Observable<Movies> { request( .popular)}
     func fetchTopRelatedMovies() -> Observable<Movies> {request( .topRelated)}
     func fetchUpcommingMovies() -> Observable<Movies> { request( .upcomming)}
+    func fetchSearchMovies() -> Observable<Movies> { request(.search)}
+    func fetchSimilarMovies(id: Int) -> Observable<Movies> { request(.similar(id: id))}
    
     func request<T: Codable>(_ request: API) -> Observable<T> {
         self.provider.rx
