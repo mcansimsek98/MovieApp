@@ -14,9 +14,7 @@ class HomeTableViewCell: UITableViewCell {
     var didSelectItemAction: DidSelectClosure?
     var movieList : [HomeViewModel] = [] {
         didSet {
-            DispatchQueue.main.async {
                 self.collectionView.reloadData()
-            }
         }
     }
     override func awakeFromNib() {
@@ -37,11 +35,15 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as? HomeCollectionViewCell else { fatalError() }
         let movie = movieList[indexPath.row]
+       /*
         let urlString = movie.posterImage
         let imageUrl: NSURL? = NSURL(string: urlString)
         if let imageUrl = imageUrl {
-            cell.imageView.sd_setImage(with: imageUrl as URL)
-        }
+            cell.imageView.sd_setImage(with: URL(string: movie.posterImage))
+        } else {
+            print("error image")
+        }*/
+        cell.imageView.sd_setImage(with: URL(string: movie.posterImage))
         cell.titleLbl.text = "\(movie.title)"
         cell.scoreLbl.text = "Vote Average: \(movie.scoreLbl)"
         cell.bodyLbl.text = " \(movie.bodyLbl)"

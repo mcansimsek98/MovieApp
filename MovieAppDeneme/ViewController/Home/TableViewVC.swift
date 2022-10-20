@@ -17,19 +17,43 @@ enum Section : Int {
 
 class TableViewVC: UIViewController, UISearchBarDelegate {
     @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var headerCollectionView: UICollectionView!
+    @IBOutlet weak var pageController: UIPageControl!
+    
     var sectionArray = ["Popular","Top Related", "Upcomming"]
     var popularMovieList : [HomeViewModel] = []
     var topRelatedMovieList : [HomeViewModel] = []
     var upcommingMovieList : [HomeViewModel] = []
     let movieListViewModel : MovieListViewModel = MovieListViewModel()
+    var headerMovieList: [HomeViewModel] = [] {
+        didSet{
+            self.headerCollectionView.reloadData()
+            pageController.numberOfPages = headerMovieList.count
+            pageController.currentPage = 0
+            pageController.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    
     let disposeBag: DisposeBag = DisposeBag()
-    @IBOutlet var headImageView: UIImageView!
+    var timer : Timer?
+    var currentIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         callViewDidload()
         binViewModel()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchMethod))
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(slideImage), userInfo: nil, repeats: true)
+    }
+    
+    @objc func slideImage() {
+        if currentIndex < headerMovieList.count - 1 {
+            currentIndex = currentIndex + 1
+        }else {
+            currentIndex = 0
+        }
+        self.pageController.currentPage = currentIndex
+        headerCollectionView.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .right, animated: true)
     }
     
     func callViewDidload() {
@@ -48,6 +72,7 @@ class TableViewVC: UIViewController, UISearchBarDelegate {
             self.popularMovieList = self.movieListViewModel.popularMovies
             self.topRelatedMovieList = self.movieListViewModel.topRelatedMovies
             self.upcommingMovieList = self.movieListViewModel.upcominMovies
+            self.headerMovieList = self.movieListViewModel.popularMovies
             self.tableView.reloadData()
         }).disposed(by: disposeBag)
     }
@@ -107,8 +132,42 @@ extension TableViewVC: UITableViewDelegate, UITableViewDataSource{
         return sectionArray[section]
     }
     
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.clear
+        if let header = view as? UITableViewHeaderFooterView {
+            header.textLabel?.textColor = .white
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
  
+}
+
+extension TableViewVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.popularMovieList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HeaderImageCollectionViewCell", for: indexPath) as? HeaderImageCollectionViewCell else { return UICollectionViewCell() }
+        let image = popularMovieList[indexPath.row].bacDropPath
+        let imageUrl: NSURL? = NSURL(string: image)
+        if let imageUrl = imageUrl {
+            cell.headerImageView.sd_setImage(with: imageUrl as URL)
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = headerCollectionView.bounds
+        return CGSize(width: size.width, height: size.height)
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        for cell in  headerCollectionView.visibleCells {
+            let indexPath = headerCollectionView.indexPath(for: cell)
+            self.pageController.currentPage = indexPath?.row ?? 1
+        }
+    }
 }

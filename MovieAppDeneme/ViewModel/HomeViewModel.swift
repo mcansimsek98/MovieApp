@@ -97,7 +97,7 @@ struct HomeViewModel {
         movie.vote_average
     }
     var posterImage : String {
-        "\(Constants.IMAGEAPI.baseURLImage)\(movie.poster_path)"
+        "\(Constants.IMAGEAPI.baseURLImage)\(movie.poster_path ?? "" )"
     }
     var popularaty : Double {
         movie.popularity
@@ -112,7 +112,7 @@ struct HomeViewModel {
         Double(movie.vote_count)
     }
     var bacDropPath : String {
-        "\(Constants.IMAGEAPI.baseURLImage)\(movie.backdrop_path)"
+        "\(Constants.IMAGEAPI.baseURLImage)\(movie.backdrop_path ?? "")"
     }
 }
 
