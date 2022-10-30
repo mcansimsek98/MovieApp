@@ -12,6 +12,14 @@
     {
       "idiom" : "universal",
       "scale" : "3x"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "2x"
     }
   ],
   "info" : {

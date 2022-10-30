@@ -27,8 +27,8 @@ class SearchVC: UIViewController, UISearchBarDelegate {
         call()
         binViewModel()
         searchbarController.searchBar.delegate = self
-        searchbarController.searchBar.backgroundColor = UIColor.darkGray
         searchbarController.searchBar.barTintColor = UIColor.clear
+        searchbarController.searchBar.backgroundColor = UIColor.white
         searcTableView.tableHeaderView = searchbarController.searchBar
     }
     //

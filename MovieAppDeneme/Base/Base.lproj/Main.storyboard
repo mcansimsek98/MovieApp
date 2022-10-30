@@ -163,23 +163,35 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m9a-OK-TjL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="230"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="230" id="4dY-M4-CmQ"/>
+                                                        <constraint firstAttribute="height" constant="200" id="4dY-M4-CmQ"/>
                                                         <constraint firstAttribute="width" constant="414" id="lVv-NM-808"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcX-Qp-BbE">
+                                                    <rect key="frame" x="20" y="202" width="46.5" height="23"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="Georgia-BoldItalic" family="Georgia" pointSize="16"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="0.10909043874172185" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="FcX-Qp-BbE" firstAttribute="leading" secondItem="L5R-ix-lRq" secondAttribute="leading" constant="20" symbolic="YES" id="9V3-bW-jMc"/>
                                                 <constraint firstAttribute="trailing" secondItem="m9a-OK-TjL" secondAttribute="trailing" id="UyQ-4e-LaX"/>
-                                                <constraint firstAttribute="bottom" secondItem="m9a-OK-TjL" secondAttribute="bottom" id="iRG-R3-2HZ"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FcX-Qp-BbE" secondAttribute="trailing" constant="20" symbolic="YES" id="ddJ-B3-gTz"/>
+                                                <constraint firstAttribute="bottom" secondItem="m9a-OK-TjL" secondAttribute="bottom" constant="30" id="iRG-R3-2HZ"/>
                                                 <constraint firstItem="m9a-OK-TjL" firstAttribute="top" secondItem="L5R-ix-lRq" secondAttribute="top" id="nzr-L2-h8C"/>
                                                 <constraint firstItem="m9a-OK-TjL" firstAttribute="leading" secondItem="L5R-ix-lRq" secondAttribute="leading" id="ruc-qM-PK6"/>
+                                                <constraint firstAttribute="bottom" secondItem="FcX-Qp-BbE" secondAttribute="bottom" constant="5" id="wCE-e4-fnZ"/>
+                                                <constraint firstItem="FcX-Qp-BbE" firstAttribute="top" secondItem="L5R-ix-lRq" secondAttribute="top" constant="202" id="z35-ct-UIh"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" red="0.081943757830000005" green="0.09268701822" blue="0.087421827019999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="headerImageView" destination="m9a-OK-TjL" id="aGG-Np-Pdq"/>
+                                            <outlet property="headerNameLbl" destination="FcX-Qp-BbE" id="r0Z-Iq-haN"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -189,7 +201,7 @@
                                 </connections>
                             </collectionView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="QU1-C5-Nat">
-                                <rect key="frame" x="20" y="291" width="374" height="26"/>
+                                <rect key="frame" x="20" y="257" width="374" height="26"/>
                             </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -205,7 +217,7 @@
                             <constraint firstItem="fbr-9b-Ceb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pTz-sJ-Oh3"/>
                             <constraint firstItem="QU1-C5-Nat" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="qL8-pQ-iIP"/>
                             <constraint firstItem="fbr-9b-Ceb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="svP-jP-RyW"/>
-                            <constraint firstItem="QU1-C5-Nat" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="199" id="yCs-AC-BAL"/>
+                            <constraint firstItem="QU1-C5-Nat" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="165" id="yCs-AC-BAL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ELr-mv-JS0"/>

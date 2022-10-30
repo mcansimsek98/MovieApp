@@ -72,7 +72,7 @@ class TableViewVC: UIViewController, UISearchBarDelegate {
             self.popularMovieList = self.movieListViewModel.popularMovies
             self.topRelatedMovieList = self.movieListViewModel.topRelatedMovies
             self.upcommingMovieList = self.movieListViewModel.upcominMovies
-            self.headerMovieList = self.movieListViewModel.popularMovies
+            self.headerMovieList = self.movieListViewModel.upcominMovies
             self.tableView.reloadData()
         }).disposed(by: disposeBag)
     }
@@ -147,17 +147,25 @@ extension TableViewVC: UITableViewDelegate, UITableViewDataSource{
 
 extension TableViewVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.popularMovieList.count
+        return self.headerMovieList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HeaderImageCollectionViewCell", for: indexPath) as? HeaderImageCollectionViewCell else { return UICollectionViewCell() }
-        let image = popularMovieList[indexPath.row].bacDropPath
+        let image = headerMovieList[indexPath.row].bacDropPath
         let imageUrl: NSURL? = NSURL(string: image)
         if let imageUrl = imageUrl {
             cell.headerImageView.sd_setImage(with: imageUrl as URL)
         }
+        cell.headerNameLbl.text = headerMovieList[indexPath.row].title
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailsVC {
+            vc.selectedArray = headerMovieList[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -9,5 +9,5 @@ import UIKit
 
 class HeaderImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var headerImageView: UIImageView!
-    
+    @IBOutlet weak var headerNameLbl: UILabel!
 }
