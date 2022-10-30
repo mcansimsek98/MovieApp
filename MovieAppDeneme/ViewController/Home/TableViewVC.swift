@@ -13,6 +13,7 @@ enum Section : Int {
     case popular = 0
     case topRelated = 1
     case upComming = 2
+    
 }
 
 class TableViewVC: UIViewController, UISearchBarDelegate {
